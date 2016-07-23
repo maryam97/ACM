@@ -15,7 +15,7 @@ void buildUF(int N, vector<int>&p) {
 		p[i] = i;
 	}
 }
-int FindSet(int i, vector<int> &p) {//got vector with &
+int FindSet(int i, vector<int> &p) {
 	return (p[i] == i) ? i : (p[i] = FindSet(p[i], p));
 }
 bool isSameSet(int i, int j, vector <int>&p) {
@@ -24,11 +24,6 @@ bool isSameSet(int i, int j, vector <int>&p) {
 void unionSet(int i, int j, vector<int>&p) {
 	if (!isSameSet(i, j, p)) {
 		int x = FindSet(i, p), y = FindSet(j, p);
-		/*if (rankk [x] > rankk[y]) p[y] = x;
-		else {
-		p[x] = y;
-		if (rankk[x] == rankk[y]) ++rankk[y];
-		}*/
 		if (x > y)
 			p[y] = x;
 		else {
@@ -49,21 +44,16 @@ int main() {
 
 	while (tc--) {
 		p.clear();
-		cin >> num; //cin.ignore(200, '\n'); cin.ignore(200, '\n'); // added
+		cin >> num; 
 		correct = 0;
 		wrong = 0;
 		getline(cin, chert);
 		buildUF(num, p);
 		while (getline(cin, str) && str.length() != 0) {
-			// int first = str[2] - '0';//wrong
-			//int sec = str[4] - '0';//wrong
-
-			stringstream ss(str);//added
-			char tmpCh; ss >> tmpCh; int first, sec;//added
-			ss >> first >> sec;//added
-
-
-							   //cerr << "first: " << first << "sec: " << sec << endl;
+		
+			stringstream ss(str);
+			char tmpCh; ss >> tmpCh; int first, sec;
+			ss >> first >> sec;
 			if (str[0] == 'c')
 				unionSet(first, sec, p);
 			else if (str[0] == 'q') {
