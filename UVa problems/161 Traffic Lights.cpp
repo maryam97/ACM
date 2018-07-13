@@ -1,5 +1,5 @@
 //161 Traffic Lights
-#define Q161
+//#define Q161
 #ifdef Q161
 
 #include <bits/stdc++.h>
