@@ -1,5 +1,5 @@
 //10443 Rock, Scissors, Paper
-//#define Q10443
+#define Q10443
 #ifdef Q10443
 
 #include <bits/stdc++.h>
